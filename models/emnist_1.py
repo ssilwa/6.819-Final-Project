@@ -53,7 +53,9 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     if max_ == None:
         max_ = len(mat['dataset'][0][0][0][0][0][0])
     training_images = mat['dataset'][0][0][0][0][0][0][:max_].reshape(max_, height, width, 1)
+    print(type(training_images))
     training_labels = mat['dataset'][0][0][0][0][0][1][:max_]
+    print(type(training_labels))
 
     # Load testing data
     if max_ == None:
