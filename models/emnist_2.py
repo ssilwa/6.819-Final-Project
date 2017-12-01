@@ -55,12 +55,14 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     # Load training data
     if max_ == None:
         max_ = len(mat['dataset'][0][0][0][0][0][0])
+        print("training: ", max_)
     training_images = mat['dataset'][0][0][0][0][0][0][:max_]
     training_labels = mat['dataset'][0][0][0][0][0][1][:max_]
 
     # Load testing data
     if max_ == None:
         max_ = len(mat['dataset'][0][0][1][0][0][0])
+        print("testing: ", max_)
     else:
         max_ = int(max_ / 6)
     testing_images = mat['dataset'][0][0][1][0][0][0][:max_]
