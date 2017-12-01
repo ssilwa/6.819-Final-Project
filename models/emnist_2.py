@@ -180,6 +180,6 @@ if __name__ == '__main__':
     if not os.path.exists(bin_dir):
         os.makedirs(bin_dir)
 
-    training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=28, verbose=False)
+    training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=None, verbose=False)
     model = build_net(training_data, width=28, height=28, verbose=False)
     train(model, training_data, epochs=10)
