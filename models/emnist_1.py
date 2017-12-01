@@ -123,9 +123,11 @@ def build_net(training_data, width=28, height=28, verbose=False):
     model.add(Dropout(0.25))
     model.add(Flatten())
 
+    print("added 2 conv, pooling, dropout")
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(nb_classes, activation='softmax'))
+    print("added dense")
 
     model.compile(loss='categorical_crossentropy',
                   optimizer='adadelta',
@@ -135,6 +137,7 @@ def build_net(training_data, width=28, height=28, verbose=False):
     return model
 
 def train(model, training_data, callback=True, batch_size=256, epochs=10):
+	print("starting train funct")
     (x_train, y_train), (x_test, y_test), mapping, nb_classes = training_data
 
     # convert class vectors to binary class matrices
@@ -144,6 +147,8 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     if callback == True:
         # Callback for analysis in TensorBoard
         tbCallBack = keras.callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=True)
+
+    print("Beginning training")
 
     model.fit(x_train, y_train,
               batch_size=batch_size,
@@ -163,19 +168,19 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     save_model(model, 'bin/model.h5')
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(usage='A training program for classifying the EMNIST dataset')
-    parser.add_argument('--file', type=str, default='../data/matlab/emnist-byclass.mat', help='Path .mat file data', required=True)
-    parser.add_argument('--width', type=int, default=28, help='Width of the images')
-    parser.add_argument('--height', type=int, default=28, help='Height of the images')
-    parser.add_argument('--max', type=int, default=None, help='Max amount of data to use')
-    parser.add_argument('--epochs', type=int, default=10, help='Number of epochs to train on')
-    parser.add_argument('--verbose', action='store_true', default=False, help='Enables verbose printing')
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(usage='A training program for classifying the EMNIST dataset')
+    # parser.add_argument('-f', '--file', type=str, default='../data/matlab/emnist-byclass.mat', help='Path .mat file data', required=True)
+    # parser.add_argument('--width', type=int, default=28, help='Width of the images')
+    # parser.add_argument('--height', type=int, default=28, help='Height of the images')
+    # parser.add_argument('--max', type=int, default=None, help='Max amount of data to use')
+    # parser.add_argument('--epochs', type=int, default=10, help='Number of epochs to train on')
+    # parser.add_argument('--verbose', action='store_true', default=False, help='Enables verbose printing')
+    # args = parser.parse_args()
 
     bin_dir = os.path.dirname(os.path.realpath(__file__)) + '/bin'
     if not os.path.exists(bin_dir):
         os.makedirs(bin_dir)
 
-    training_data = load_data(args.file, width=args.width, height=args.height, max_=args.max, verbose=args.verbose)
-    model = build_net(training_data, width=args.width, height=args.height, verbose=args.verbose)
-    train(model, training_data, epochs=args.epochs)
+    training_data = load_data(../data/matlab/emnist-byclass.mat, width=28, height=28, max_=28, verbose=False)
+    model = build_net(training_data, width=28, height=28, verbose=False)
+    train(model, training_data, epochs=10)
