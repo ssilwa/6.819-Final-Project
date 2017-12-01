@@ -137,7 +137,7 @@ def build_net(training_data, width=28, height=28, verbose=False):
     return model
 
 def train(model, training_data, callback=True, batch_size=256, epochs=10):
-	print("starting train funct")
+    print("starting train funct")
     (x_train, y_train), (x_test, y_test), mapping, nb_classes = training_data
 
     # convert class vectors to binary class matrices
