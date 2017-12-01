@@ -164,7 +164,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(usage='A training program for classifying the EMNIST dataset')
-    parser.add_argument('-f', '--file', type=str, default='../data/emnist-byclass.mat', help='Path .mat file data', required=True)
+    parser.add_argument('-f', '--file', type=str, default='../data/matlab/emnist-byclass.mat', help='Path .mat file data', required=True)
     parser.add_argument('--width', type=int, default=28, help='Width of the images')
     parser.add_argument('--height', type=int, default=28, help='Height of the images')
     parser.add_argument('--max', type=int, default=None, help='Max amount of data to use')
