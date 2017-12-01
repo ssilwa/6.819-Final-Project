@@ -59,6 +59,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     training_images = mat['dataset'][0][0][0][0][0][0][:max_]
     training_labels = mat['dataset'][0][0][0][0][0][1][:max_]
 
+    print('checkpoint 1')
     # Load testing data
     if max_ == None:
         max_ = len(mat['dataset'][0][0][1][0][0][0])
@@ -68,6 +69,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     testing_images = mat['dataset'][0][0][1][0][0][0][:max_]
     testing_labels = mat['dataset'][0][0][1][0][0][1][:max_]
 
+    print('checkpint 2')
     # Reshape training data to be valid
     if verbose == True: _len = len(training_images)
     for i in range(len(training_images)):
