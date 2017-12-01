@@ -146,6 +146,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     y_train = np_utils.to_categorical(y_train, nb_classes)
     y_test = np_utils.to_categorical(y_test, nb_classes)
     y_train = np.squeeze(y_train, axis=1) # make it from 3d to 2d
+    y_test = np.squeeze(y_test, axis=1) # make it from 3d to 2d 
 
     if callback == True:
         # Callback for analysis in TensorBoard
