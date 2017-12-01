@@ -150,9 +150,9 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     print("Beginning training")
 
-    print(y_train)
+    print(y_train.shape)
     print("______________")
-    print(x_train)
+    print(x_train.shape)
     model.fit(x_train, y_train,
               batch_size=batch_size,
               epochs=epochs,
