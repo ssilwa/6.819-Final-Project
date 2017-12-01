@@ -121,7 +121,7 @@ def build_net(training_data, width=28, height=28, verbose=False):
 
     model.add(MaxPooling2D(pool_size=pool_size))
     model.add(Dropout(0.25))
-    model.add(Flatten())
+    # model.add(Flatten())
 
     print("added 2 conv, pooling, dropout")
     model.add(Dense(512, activation='relu'))
