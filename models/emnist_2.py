@@ -108,6 +108,7 @@ def build_net(training_data, width=28, height=28, epochs=10, verbose=False):
             verbose: enable verbose printing
     '''
     # Initialize data
+    print("starting build_net")
     (x_train, y_train), (x_test, y_test), mapping = training_data
     input_shape = (height, width, 1)
     nb_classes = len(mapping)
@@ -122,6 +123,7 @@ def build_net(training_data, width=28, height=28, epochs=10, verbose=False):
     y_train = np_utils.to_categorical(y_train, nb_classes)
     y_test = np_utils.to_categorical(y_test, nb_classes)
 
+    print("starting to build model")
     model = Sequential()
     model.add(Convolution2D(nb_filters,
                             kernel_size,
@@ -144,18 +146,20 @@ def build_net(training_data, width=28, height=28, epochs=10, verbose=False):
                   optimizer='adadelta',
                   metrics=['accuracy'])
 
+    print("Model compiled")
     if verbose == True: print(model.summary())
 
     # Callback for analysis in TensorBoard
     tbCallBack = keras.callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=True)
 
+    print("starting to fit")
     model.fit(x_train, y_train,
               batch_size=batch_size,
               epochs=epochs,
               verbose=1,
               validation_data=(x_test, y_test),
               callbacks=[tbCallBack])
-
+    print("fit completed")
     score = model.evaluate(x_test, y_test, verbose=0)
     print('Test score:', score[0])
     print('Test accuracy:', score[1])
@@ -181,5 +185,5 @@ if __name__ == '__main__':
         os.makedirs(bin_dir)
 
     training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=None, verbose=False)
-    model = build_net(training_data, width=28, height=28, verbose=False)
-    train(model, training_data, epochs=10)
+    model = build_net(training_data, width=28, height=28, epochs=10, verbose=False)
+    # train(model, training_data, epochs=10)
