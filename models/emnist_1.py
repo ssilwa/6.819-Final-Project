@@ -153,6 +153,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     print("Beginning training")
 
     print(y_train.shape)
+    print(y_train[0][0][1:10])
     print("______________")
     print(x_train.shape)
     model.fit(x_train, y_train,
