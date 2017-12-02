@@ -117,6 +117,11 @@ def build_net(training_data, width=28, height=28, verbose=False):
                             padding='valid',
                             input_shape=input_shape,
                             activation='relu'))
+
+    model.add(Convolution2D(nb_filters,
+                            kernel_size,
+                            activation='relu'))
+
     model.add(Convolution2D(nb_filters,
                             kernel_size,
                             activation='relu'))
@@ -150,7 +155,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     if callback == True:
         # Callback for analysis in TensorBoard
-        tbCallBack = keras.callbacks.TensorBoard(log_dir='./ByMergeGraph', histogram_freq=0, write_graph=True, write_images=True)
+        tbCallBack = keras.callbacks.TensorBoard(log_dir='./DeepByClassGraph', histogram_freq=0, write_graph=True, write_images=True)
 
     print("Beginning training")
 
@@ -159,7 +164,6 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     print("______________")
     print(x_train.shape)
     print(x_test.shape)
-
     model.fit(x_train, y_train,
               batch_size=batch_size,
               epochs=epochs,
@@ -173,9 +177,9 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     # Offload model to file
     model_yaml = model.to_yaml()
-    with open("bin/bymerge_model.yaml", "w") as yaml_file:
+    with open("bin/model.yaml", "w") as yaml_file:
         yaml_file.write(model_yaml)
-    save_model(model, 'bin/bymerge_model.h5')
+    save_model(model, 'bin/model.h5')
 
 if __name__ == '__main__':
     # parser = argparse.ArgumentParser(usage='A training program for classifying the EMNIST dataset')
@@ -191,6 +195,6 @@ if __name__ == '__main__':
     if not os.path.exists(bin_dir):
         os.makedirs(bin_dir)
 
-    training_data = load_data('../data/matlab/emnist-bymerge.mat', width=28, height=28, max_=None, verbose=False)
+    training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=None, verbose=False)
     model = build_net(training_data, width=28, height=28, verbose=False)
     train(model, training_data, epochs=10)
