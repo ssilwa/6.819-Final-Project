@@ -168,7 +168,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     if callback == True:
         # Callback for analysis in TensorBoard
-        tbCallBack = keras.callbacks.TensorBoard(log_dir='./DeepByClassGraph', histogram_freq=0, write_graph=True, write_images=True)
+        tbCallBack = keras.callbacks.TensorBoard(log_dir='./v2DeepByClassGraph', histogram_freq=0, write_graph=True, write_images=True)
 
     print("Beginning training")
 
@@ -210,4 +210,4 @@ if __name__ == '__main__':
 
     training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=None, verbose=False)
     model = build_net(training_data, width=28, height=28, verbose=False)
-    train(model, training_data, epochs=10)
+    train(model, training_data, epochs=15)
