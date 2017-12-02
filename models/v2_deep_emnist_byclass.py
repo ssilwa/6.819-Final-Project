@@ -47,7 +47,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
 
     # Load char mapping
     mapping = {kv[0]:kv[1:][0] for kv in mat['dataset'][0][0][2]}
-    pickle.dump(mapping, open('bin/mapping.p', 'wb' ))
+    pickle.dump(mapping, open('bin/v2_deep_mapping.p', 'wb' ))
 
     # Load training data
     if max_ == None:
