@@ -190,9 +190,9 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     # Offload model to file
     model_yaml = model.to_yaml()
-    with open("bin/model.yaml", "w") as yaml_file:
+    with open("bin/v2_deep_model.yaml", "w") as yaml_file:
         yaml_file.write(model_yaml)
-    save_model(model, 'bin/model.h5')
+    save_model(model, 'bin/v2_deep_model.h5')
 
 if __name__ == '__main__':
     # parser = argparse.ArgumentParser(usage='A training program for classifying the EMNIST dataset')
