@@ -197,4 +197,4 @@ if __name__ == '__main__':
 
     training_data = load_data('../data/matlab/emnist-byclass.mat', width=28, height=28, max_=None, verbose=False)
     model = build_net(training_data, width=28, height=28, verbose=False)
-    train(model, training_data, epochs=10)
+    train(model, training_data, epochs=20)
