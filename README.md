@@ -14,3 +14,12 @@ To do:
 data is 28 x 28 in .mat format
 
 
+3) Models:
+	1. Normal EMNIST Byclass- .867 test acc
+	2. "Overfit" EMNIST Byclass (run 25 epochs) - .8707 acc
+	3. "Deep" EMNIST Byclass (added 1 more conv2d layer) - 0.87019 acc
+	4. "Overfit" "Deep" EMNIST Byclass (3. + 20 epochs) - 0.873214 acc
+
+
+4) Current best model:
+	labeled as "Overdeep_model.yaml", "overdeep_model.h5"
