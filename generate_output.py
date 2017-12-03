@@ -2,7 +2,10 @@ import operator
 from graphmaker import *
 import scipy.ndimage
 
-def run_image(image_path, size_x = 28, size_y = 28):
+
+
+
+def run_image(model, image_path, size_x = 28, size_y = 28):
 	text_output = {}
 	curr_img = scipy.ndimage.imread(image_path, flatten = True)
 	wordmap = image_pipeline(curr_img)
