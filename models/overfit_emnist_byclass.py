@@ -47,7 +47,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
 
     # Load char mapping
     mapping = {kv[0]:kv[1:][0] for kv in mat['dataset'][0][0][2]}
-    pickle.dump(mapping, open('bin/mapping.p', 'wb' ))
+    pickle.dump(mapping, open('bin/overfit_mapping.p', 'wb' ))
 
     # Load training data
     if max_ == None:
@@ -170,7 +170,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     score = model.evaluate(x_test, y_test, verbose=0)
     print('Test score:', score[0])
     print('Test accuracy:', score[1])
-
+ 
     # Offload model to file
     model_yaml = model.to_yaml()
     with open("bin/overfit_byclass_model.yaml", "w") as yaml_file:
