@@ -1,4 +1,3 @@
-from scipy import ndimage
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -99,9 +98,6 @@ def image_pipeline(imgarray):
         output[(result[i],result[i+1])] = currmap
     return output
 
-### How to use ###
-# image_pipeline is the main function
-# paragraphimg = ndimage.imread('image', flatten = True)
-# wordmap = image_pipeline(paragraphimg)
+
 
 
