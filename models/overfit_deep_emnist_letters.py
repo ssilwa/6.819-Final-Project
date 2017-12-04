@@ -149,6 +149,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
 
     # convert class vectors to binary class matrices
     y_train = y_train.flatten()
+    y_train = y_train[:,0:1]
     y_test = y_test.flatten()
     print(y_train)
     y_train = np_utils.to_categorical(y_train, nb_classes)
