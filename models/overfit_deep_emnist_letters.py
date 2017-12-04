@@ -148,7 +148,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     (x_train, y_train), (x_test, y_test), mapping, nb_classes = training_data
 
     # convert class vectors to binary class matrices
-    print(y_train.shape())
+    print(y_train)
     y_train = np_utils.to_categorical(y_train, nb_classes)
     y_test = np_utils.to_categorical(y_test, nb_classes)
     y_train = np.squeeze(y_train, axis=1) # make it from 3d to 2d
