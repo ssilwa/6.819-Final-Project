@@ -83,8 +83,10 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     training_images = training_images.astype('float32')
     testing_images = testing_images.astype('float32')
 
-    print(sum(sum(sum(training_images))))
+    # subtracting mean from images
+    training_images -= np.mean(training_images)
     print(np.mean(training_images))
+
     # Normalize to prevent issues with model
     training_images /= 255
     testing_images /= 255
@@ -156,7 +158,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     y_train = np.squeeze(y_train, axis=1) # make it from 3d to 2d
     y_test = np.squeeze(y_test, axis=1) # make it from 3d to 2d 
 
-    if callback == False:
+    if callback == True:
         # Callback for analysis in TensorBoard
         tbCallBack = keras.callbacks.TensorBoard(log_dir='./OverDeepLettersGraph', histogram_freq=0, write_graph=True, write_images=True)
 
