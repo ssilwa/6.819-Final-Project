@@ -156,7 +156,7 @@ def train(model, training_data, callback=True, batch_size=256, epochs=10):
     y_train = np.squeeze(y_train, axis=1) # make it from 3d to 2d
     y_test = np.squeeze(y_test, axis=1) # make it from 3d to 2d 
 
-    if callback == True:
+    if callback == False:
         # Callback for analysis in TensorBoard
         tbCallBack = keras.callbacks.TensorBoard(log_dir='./OverDeepLettersGraph', histogram_freq=0, write_graph=True, write_images=True)
 
@@ -199,5 +199,5 @@ if __name__ == '__main__':
         os.makedirs(bin_dir)
 
     training_data = load_data('../data/matlab/emnist-letters.mat', width=28, height=28, max_=None, verbose=False)
-    # model = build_net(training_data, width=28, height=28, verbose=False)
+    model = build_net(training_data, width=28, height=28, verbose=False)
     train(model, training_data, epochs=20)
