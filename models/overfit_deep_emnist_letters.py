@@ -84,6 +84,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     testing_images = testing_images.astype('float32')
 
     print(sum(training_images)) 
+    print(np.mean(training_images))
     # Normalize to prevent issues with model
     training_images /= 255
     testing_images /= 255
