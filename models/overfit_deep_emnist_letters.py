@@ -83,7 +83,7 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     training_images = training_images.astype('float32')
     testing_images = testing_images.astype('float32')
 
-    print(sum(training_images)) 
+    print(sum(sum(sum(training_images))))
     print(np.mean(training_images))
     # Normalize to prevent issues with model
     training_images /= 255
@@ -199,5 +199,5 @@ if __name__ == '__main__':
         os.makedirs(bin_dir)
 
     training_data = load_data('../data/matlab/emnist-letters.mat', width=28, height=28, max_=None, verbose=False)
-    model = build_net(training_data, width=28, height=28, verbose=False)
+    # model = build_net(training_data, width=28, height=28, verbose=False)
     train(model, training_data, epochs=20)
