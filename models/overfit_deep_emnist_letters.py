@@ -93,7 +93,9 @@ def load_data(mat_file_path, width=28, height=28, max_=None, verbose=True):
     # subtracting mean from normalized images
     print(np.mean(training_images))
     training_images -= np.mean(training_images)
-
+    print(np.mean(testing_images))
+    testing_images -= np.mean(testing_images)
+    
     nb_classes = len(mapping)+1 # since there are 26 classes, need to increase by 1
     print("nb_classes", nb_classes)
 
