@@ -145,7 +145,7 @@ def build_net(training_data, width=28, height=28, verbose=False):
     print("added dense")
 
     model.compile(loss='categorical_crossentropy',
-                  optimizer='adadelta',
+                  optimizer='adam',
                   metrics=['accuracy'])
 
     if verbose == True: print(model.summary())
