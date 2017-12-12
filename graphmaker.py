@@ -51,11 +51,11 @@ def breakup_consecutive_line(result):
     
 def breakup_consecutive_paragraph(result):
     """ Takes gaps from paragraph image and outputs the lines """
+    print(result)
     line_indices = []
     for group in result:
-        if len(group) >= 5:
-            line_indices.append(group[4])
-    return line_indices[1:]
+        line_indices.append((group[0], group[-1]))
+    return line_indices
 
 
 def allocate_letters(word_indices, letter_indices):
@@ -90,12 +90,12 @@ def image_pipeline(imgarray):
     """ Pipeline for an image. Out puts a graph structure for lines, words, characters"""
     result = get_seperators_from_pagragraph(imgarray)
     result = breakup_consecutive_paragraph(group_consecutives(result))
-    result = [0] + result
     output = {}
-    for i in range(len(result)-1):
-        currline = imgarray[result[i]:result[i+1], :]
+    for i in range(1, len(result)):
+        start, end = result[i]
+        currline = imgarray[result[i-1][1]:start, :]
         currmap = line_pipeline(currline)
-        output[(result[i],result[i+1])] = currmap
+        output[(result[i-1][1],start)] = currmap
     return output
 
 

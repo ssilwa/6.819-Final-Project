@@ -1,0 +1,22 @@
+######## Results Corresponding to Test Images ########
+
+test 6
+aboding abounds abscinv abscond abusing adjigoj adjoinj agnosig agonisw amusing auspicy azygous backing backupj basking bogyman bousing bucinaj bucking buwing
+
+test 7
+bob is d backup snob agonisn is amusing
+
+test 5
+bing o mango axiom amig
+
+test 4
+i am d snob i am d snob
+
+test3 
+abcd bbgb ijkim nopo bsiu mxyz abcd bbgb ijkim nopo bsiu mxyz
+
+test2
+mii bob man nabis co nap
+
+test
+namb is bob namb is bob
