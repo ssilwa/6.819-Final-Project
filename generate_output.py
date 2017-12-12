@@ -50,7 +50,5 @@ def make_text(text_output):
 
 if __name__ == '__main__':
 	model = load_model('models/bin/overdeep_letter_model.h5')
-	testing = ['test3.png', 'test2.png', 'test.png']
-	for test in testing:
-		final_text = make_text(run_image(model, test))
-		print(final_text)
+	final_text = make_text(run_image(model, 'test4.png'))
+	print(final_text)
